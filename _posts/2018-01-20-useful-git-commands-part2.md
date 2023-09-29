@@ -4,7 +4,8 @@ title: Useful Git commands (Part 2)
 date: 2018-01-20 10:00 +0530
 ---
 ## GIT SQUASHING
-There are instances when a feature development is in progress in the staging branch, there exist multiple commits in the staging branch.
+There are instances when a feature development is in progress in the staging branch, there exist multiple commits in the staging branch. There exist an option in git to merge multiple commits into single commit. This is called squashing commits.
+
 In the below example, three different commits are performed.
 ```
 (karthi)[git-example]$ touch a.txt
@@ -67,7 +68,7 @@ new file mode 100644
 index 0000000..e69de29
 ```
 
-Lets perform squash the first 2 commits "commit B" and "commit C" into a single commit.
+Lets perform git squash to merge the last 2 commits "commit B" and "commit C" into a single commit.
 ```
 (karthi)[git-example]$ git rebase -i HEAD~2
 pick deee2fa commit B
