@@ -4,6 +4,7 @@ title: A route to BGP
 date: 2022-07-25 09:45 +0530
 ---
 
+## A route to BGP
 BGP doesn't need any introduction. Network engineers come across this term every single day at their work. When we are surfing the internet, BGP works behind the hoods. Lets see how the BGP routes propagates in a tnetwork.
 
 BGP runs as iBGP (internal BGP) in routers inside an Autonomous System (AS) and as eBGP (external BGP) in AS border routers across two different AS.
