@@ -4,10 +4,11 @@
 In this post, let's explore how to compile a simple linux kernel module, insert it into an existing kernel and learn the internals.
 
 ## Linux Kernel Module
-Linux kernel module is a code chunk which Linux uses to integrate to its running kernel to perform device driver functionality, implement system calls and dding
-features to linux kernel. This can be done by invoking module_init() and module_exit().
+Linux kernel module is a code chunk which Linux uses to integrate to its running kernel on demand. 
+ This code chunks can be loaded and unloaded dynamically by user. This code can be device driver functionality, system calls implementation and new
+features to linux kernel. This loading and unloading of module can be done by invoking module_init() and module_exit() respectively.
 
-## Prepare your Linux distribution for kernel module development
+## Prepare your Linux distribution for kernel development
 For this blog, Ubuntu 22.04 Jammy ditribution is used.
 ```
 #cat /etc/os-release 
