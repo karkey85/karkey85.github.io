@@ -1,7 +1,7 @@
 
-## A Simple Linux Character Device Driver 
+# A Simple Linux Character Device Driver 
 
-# Everything in Linux is a file
+## Everything in Linux is a file
 
 Based on the concept "Everything in Linux is a file", all physical devices like hard disk, usb pen drive, NIC card, mouse and keyboard are represented in Linux 
 as files. Let's quickly check the devices in the system using /proc/devices to check char devices and block devices.
@@ -25,7 +25,7 @@ Block devices:
   8 sd
 ```
 
-# Device File creation
+## Device File creation
 
 There are two ways to do the device file creation. 
 1. Manually using mknod command
@@ -57,7 +57,7 @@ crw--w---- 1 root   tty     4, 19 Oct 14 01:50 /dev/tty19
 
 ```
 
-# A simple char device
+## A simple char device
 
 Lets create a simple char device using mknod command.
 ```
@@ -71,9 +71,9 @@ But the device is not listed in /proc/devices yet. Nor it has any file operation
 # cat /dev/char0
 cat: /dev/char0: No such device or address
 ```
-# A simple char driver
+## A simple char driver
 
-This char driver implements open/read/close file operations and registers major number and device name using register_chrdev() function.
+Let's write a simple character driver. This char driver implements dummy open/read/close file operations and registers major number and device name using register_chrdev() function.
 
 ```
 #include<linux/module.h>
@@ -120,7 +120,7 @@ static void simple_char_driver_exit(void)
 {
 	printk(KERN_ALERT "EXIT: Simple Character Driver\n");
 	/* unregister the device */
-	unregister_chrdev( 449, "simple_driver");
+	unregister_chrdev( 449, "char0");
 }
 
 module_init(simple_char_driver_init);
@@ -147,7 +147,7 @@ make[1]: Leaving directory '/usr/src/linux-headers-6.2.0-34-generic'
 
 ```
 
-Once the driver is inserted, we can see device appears in /proc/devices.
+Once the driver is inserted, we can see our device appears in /proc/devices.
 
 ```
 # insmod simple_char.ko 
@@ -184,3 +184,24 @@ Let's try to perform read operation on this device.
 [40449.712247] READ: Simple Character Driver
 [40449.712272] CLOSE: Simple Character Driver
 ```
+## udevadm monitor command
+The driver association and disassociation to a device can be checked using udevadm monitor command.
+
+```
+# udevadm monitor
+monitor will print the received events for:
+UDEV - the event which udev sends out after rule processing
+KERNEL - the kernel uevent
+
+KERNEL[38600.794431] add      /module/simple_char (module)
+UDEV  [38600.810820] add      /module/simple_char (module)
+KERNEL[39012.912445] remove   /module/simple_char (module)
+UDEV  [39012.920846] remove   /module/simple_char (module)
+```
+
+## Note
+This character device file is not directly associated to any real device or hardware. In the next post, we will see how to associate a real device to this driver.
+
+## References:
+1. https://embetronicx.com/tutorials/linux/device-drivers/device-file-creation-for-character-drivers/
+2. http://derekmolloy.ie/writing-a-linux-kernel-module-part-2-a-character-device/
