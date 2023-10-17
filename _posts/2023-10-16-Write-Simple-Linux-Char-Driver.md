@@ -57,7 +57,130 @@ crw--w---- 1 root   tty     4, 19 Oct 14 01:50 /dev/tty19
 
 ```
 
-# A simple char driver
+# A simple char device
+
+Lets create a simple char device using mknod command.
+```
+# mknod /dev/char0 c 449 0
+# ls -l /dev/char0
+crw-r--r-- 1 root root 449, 0 Oct 17 13:46 /dev/char0
+```
+But the device is not listed in /proc/devices yet. Nor it has any file operation when we do "cat /dev/char0". We need to associate a driver to make it visible in /proc/devices.
 
 ```
+# cat /dev/char0
+cat: /dev/char0: No such device or address
+```
+# A simple char driver
+
+This char driver implements open/read/close file operations and registers major number and device name using register_chrdev() function.
+
+```
+#include<linux/module.h>
+#include<linux/fs.h>
+
+MODULE_AUTHOR("Karthikeyan Arulmozhivarman");
+MODULE_DESCRIPTION("Simple character driver");
+MODULE_LICENSE("GPL");
+
+ssize_t simple_char_driver_read (struct file *file, char __user *buf, size_t length, loff_t *offset)
+{
+	return 0;
+}
+
+int simple_char_driver_open (struct inode *inode, struct file *file)
+{
+	printk(KERN_ALERT "OPEN: Simple Character Driver\n");
+	return 0;
+}
+
+
+int simple_char_driver_close (struct inode *inode, struct file *file)
+{
+	printk(KERN_ALERT "CLOSE: Simple Character Driver\n");
+	return 0;
+}
+
+struct file_operations simple_char_fops = {
+	.owner   = THIS_MODULE,
+	.read    = simple_char_driver_read,
+	.open    = simple_char_driver_open,
+	.release = simple_char_driver_close
+};
+
+static int simple_char_driver_init(void)
+{
+	printk(KERN_ALERT "INIT: Simple Character Driver\n");
+	/* register the device */
+	register_chrdev( 449, "char0", &simple_char_fops);
+	return 0;
+}
+
+static void simple_char_driver_exit(void)
+{
+	printk(KERN_ALERT "EXIT: Simple Character Driver\n");
+	/* unregister the device */
+	unregister_chrdev( 449, "simple_driver");
+}
+
+module_init(simple_char_driver_init);
+module_exit(simple_char_driver_exit);
+
+```
+
+Compile this simple driver and perform insmod.
+
+```
+# make
+make -C /lib/modules/6.2.0-34-generic/build M=/home/karkey/char_Driver modules
+make[1]: Entering directory '/usr/src/linux-headers-6.2.0-34-generic'
+warning: the compiler differs from the one used to build the kernel
+  The kernel was built by: x86_64-linux-gnu-gcc-11 (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+  You are using:           gcc-11 (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+  CC [M]  /home/karkey/char_Driver/simple_char.o
+  MODPOST /home/karkey/char_Driver/Module.symvers
+  CC [M]  /home/karkey/char_Driver/simple_char.mod.o
+  LD [M]  /home/karkey/char_Driver/simple_char.ko
+  BTF [M] /home/karkey/char_Driver/simple_char.ko
+Skipping BTF generation for /home/karkey/char_Driver/simple_char.ko due to unavailability of vmlinux
+make[1]: Leaving directory '/usr/src/linux-headers-6.2.0-34-generic'
+
+```
+
+Once the driver is inserted, we can see device appears in /proc/devices.
+
+```
+# insmod simple_char.ko 
+# cat /proc/devices
+Character devices:
+  1 mem
+  4 /dev/vc/0
+  4 tty
+  4 ttyS
+  5 /dev/tty
+  5 /dev/console
+  5 /dev/ptmx
+  5 ttyprintk
+ 13 input
+ 254 gpiochip
+ 449 char0
+
+Block devices:
+  7 loop
+  8 sd
+```
+
+dmesg shows the below output.
+```
+[40073.638685] INIT: Simple Character Driver
+```
+
+Let's try to perform read operation on this device.
+
+```
+# cat /dev/char0
+# dmesg
+[40449.712221] OPEN: Simple Character Driver
+[40449.712247] READ: Simple Character Driver
+[40449.712272] CLOSE: Simple Character Driver
 ```
