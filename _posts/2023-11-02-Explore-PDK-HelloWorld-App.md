@@ -21,7 +21,8 @@ meson build
 ninja -C build
 ```
 The build takes roughly 10 minutes for this to complete.
-![](/.pastes\2023-12-08-18-15-52.png)
+![img-description](/img/dpdk1.png)
+_Ninja Build_
 
 Let's first build this "helloworld" application and give it a run.
 ```
