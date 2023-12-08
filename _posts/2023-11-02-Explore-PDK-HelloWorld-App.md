@@ -24,8 +24,6 @@ The build takes roughly 10 minutes for this to complete.
 
 ![img-description](/img/dpdk1.JPG)
 
-_Ninja Build_
-
 Let's first build this "helloworld" application and give it a run.
 ```
 $ meson configure -Dexamples=helloworld build
