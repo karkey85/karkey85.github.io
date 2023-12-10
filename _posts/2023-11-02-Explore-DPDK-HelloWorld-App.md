@@ -1,4 +1,3 @@
-# Explore DPDK: Hello world app
 
 Download latest stable DPDK tar ball from https://core.dpdk.org/download/
 ```
