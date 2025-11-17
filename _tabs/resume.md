@@ -1,7 +1,6 @@
 ---
-layout: page
-title: Resume
-permalink: /resume/
+icon: fas fa-stream
+order: 5
 
 ---
 
