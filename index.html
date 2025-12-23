@@ -1,4 +1,55 @@
+
 ---
-layout: home
-# Index page
+layout: page
+title: ""
+permalink: /
 ---
+
+
+<div class="home-hero">
+
+  <h1 class="hero-title">
+    Embedded Networking Software Architect
+  </h1>
+
+  <h2 class="hero-subtitle">
+    18+ Years Designing Carrier-Grade, High-Performance Systems
+  </h2>
+
+  <p class="hero-domain">
+    SIP / VoIP • Routing • Control Plane • Linux Kernel • High-Scale Embedded Systems
+  </p>
+
+  <ul class="hero-points">
+    <li>Architected production systems handling <strong>millions of concurrent sessions</strong></li>
+    <li>Deep expertise in <strong>protocol stacks, performance engineering, and reliability</strong></li>
+    <li>Hands-on with <strong>C/C++, Linux, eBPF, SIP, routing, and control-plane design</strong></li>
+  </ul>
+
+</div>
+
+<hr/>
+
+## Selected Technical Articles
+
+<!-- 
+Only show posts that explicitly opt-in via `featured: true`
+-->
+
+{% assign featured_posts = site.posts | where: "featured", true %}
+
+{% for post in featured_posts limit:5 %}
+- **[{{ post.title }}]({{ post.url }})**  
+  <span class="post-meta">{{ post.date | date: "%b %Y" }} · {{ post.categories | join: ", " }}</span>
+{% endfor %}
+
+<hr/>
+
+## Focus Areas
+
+- Embedded Networking Architectures
+- SIP / VoIP Control Planes
+- Routing, Signaling & Protocol Design
+- Linux Kernel & Userspace Networking
+- Scalability, Performance & Fault Tolerance
+
