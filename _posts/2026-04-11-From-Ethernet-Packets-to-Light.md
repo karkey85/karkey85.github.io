@@ -1,4 +1,6 @@
 
+![Digital World](../img/2026-04-11/digital_world.png)
+
 ## From Ethernet Packets to Light: How Data Travels 12,000 km Across Oceans
 
 Ever wondered how you’re able to make a voice or video call from your home to the farthest corner of the world?
@@ -40,7 +42,8 @@ Because of this:
 
 This is the physical foundation of the global internet—**optical fiber laid across continents and ocean floors, carrying massive volumes of data as light**.**
 
-**Routers Don’t Speak “Light”, but Transponders do**
+
+**Routers Speak Packet, but Transponders talk Light**
 
 In real-world deployments, high-end routers and switches from vendors like Cisco and Arista operate purely in the packet domain. Typically, Cisco ASR 9000 Series or Cisco NCS 5500 Series in a service provider core and Arista 7500R Series or Arista 7800R Series in data center spine/core fall under this segment.
 These platforms process and forward **Ethernet/IP/MPLS packets** at very high throughput (100G/400G and beyond), but fundamentally, they operate in the **electrical domain (or short-reach optics like SR/LR pluggables)**.
