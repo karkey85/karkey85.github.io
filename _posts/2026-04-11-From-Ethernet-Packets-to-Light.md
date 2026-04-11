@@ -7,7 +7,7 @@ We often say the Internet is the highway. But what really matters is who is driv
 
 Now, this is where it hits differently for a network engineer.
 
-How does a packet—whether it’s a voice call, a WhatsApp message, or a LinkedIn post—travel from New York to Chennai (over 12,000 km away) in just a second or two?
+How does a packet—whether it’s a voice call, a WhatsApp message or a LinkedIn post—travel from New York to Chennai (over 12,000 km away) in just a second or two?
 
 Your guess is right.
 
@@ -42,81 +42,52 @@ This is the physical foundation of the global internet—**optical fiber laid ac
 
 **Routers Don’t Speak “Light”, but Transponders do**
 
-Core devices from companies like Cisco or Arista Networks deal with Ethernet/IP packets. Electrical domain. They don’t directly push signals across oceans. So where does the transition happen?
+In real-world deployments, high-end routers and switches from vendors like Cisco and Arista operate purely in the packet domain. Typically, Cisco ASR 9000 Series or Cisco NCS 5500 Series in a service provider core and Arista 7500R Series or Arista 7800R Series in data center spine/core fall under this segment.
+These platforms process and forward **Ethernet/IP/MPLS packets** at very high throughput (100G/400G and beyond), but fundamentally, they operate in the **electrical domain (or short-reach optics like SR/LR pluggables)**.
 
-This is where optical vendors like Fujitsu and Ciena come in. They build transponders. 
+They are not designed to drive long-haul optical signals across hundreds or thousands of kilometers.
 
-Think of a transponder as a translator between two worlds:
-Ethernet (electrical packets)
-Optical (light signals)
+So the obvious question is:
 
-What actually happens:
+**Where does the transition from packet domain to long-haul optical domain actually happen?**
 
-Ethernet traffic from a router enters the transponder
-The signal is processed and mapped
-It is converted into an optical signal
-Assigned a specific wavelength
-Sent into the optical line system
+---
 
-At the far end, the reverse happens.
+This is where dedicated optical transport platforms come into the picture.
 
-The Core Idea: DWDM
+Vendors like Fujitsu, Ciena and others build carrier-grade systems specifically for this purpose.
 
-The real power of optical networks comes from:
+Typical examples include:
 
- ense Wavelength Division Multiplexing (DWDM)
+* Fujitsu 1FINITY T-Series
+* Ciena Waveserver 5
+* Ciena 6500 Packet-Optical Platform
 
-Instead of sending just one signal per fiber, DWDM allows multiple signals to coexist.
+These systems act as **transponders/muxponders**, forming the bridge between packet networks and optical transport networks.
 
-Each signal is carried on a different wavelength (color of light).
+---
 
-So in a single fiber:
+You can think of a transponder as a high-performance translator between two domains:
 
-You don’t send one stream
-You send dozens (sometimes 80+ wavelengths)
+* Client side → Ethernet/IP/MPLS (from routers/switches)
+* Line side → Coherent optical wavelengths (for DWDM systems)
 
-Each wavelength can carry:
+---
 
-100G
-400G
-800G (modern systems)
+This packet-to-optical conversion layer is what enables routers sitting in data centers or POPs to seamlessly communicate across continents—without ever “knowing” the complexity of the optical transport underneath.
 
-Which means a single fiber can carry multiple terabits per second.
 
-That’s the real backbone of the internet.
+**Long Distance: Amplification Matters**
 
-Long Distance: Amplification Matters
+Even with fiber, signals don’t stay perfect forever. Since they weaken over distance, we use optical amplifiers (like EDFA) or Raman amplification (used in long-haul systems to boost signal quality). These are placed at intervals across the fiber—especially in submarine cables. This is what allows signals to travel thousands of kilometers without being converted back to electrical form. This is where Fujitsu 1FINITY L-Series blades come into picture.
 
-Even with fiber, signals don’t stay perfect forever.
+**End-to-End Flow (Putting It Together)**
 
-Over distance, they weaken.
+The entire journey so far is simplified:
 
-So we use:
+Router → Transponder → Optical Line System → Fiber(under ocean) → Optical Line System → Transponder → Router
 
-Optical amplifiers (like EDFA)
-Raman amplification (used in long-haul systems to boost signal quality)
-
-These are placed at intervals across the fiber—especially in submarine cables.
-
-This is what allows signals to travel thousands of kilometers without being converted back to electrical form.
-
-End-to-End Flow (Putting It Together)
-
-If I simplify the entire journey:
-
-Router → Transponder → Optical Line System → Fiber → Optical Line System → Transponder → Router
-
-Or in a more real-world view:
-
-Cisco router
-→ transponder
-→ DWDM / lambda system
-→ long-haul fiber (even under ocean)
-→ DWDM system
-→ transponder
-→ destination router
-
-That’s your packet’s journey across continents.
+That’s our packet’s journey across continents.
 
 **How Much Data Are We Talking?**
 
@@ -126,17 +97,7 @@ Single wavelength: up to 800G (and moving towards 1.6T)
 Single fiber: 10–20 Tbps and beyond
 With advanced systems: even higher using dense channel packing
 
-This is what powers:
-
-Cloud infrastructure
-Video streaming
-Global internet traffic
-AI workloads
-
-**Real-World Exposure**
-
-I’ve worked on Fujistu 1finity products like Flashwave 9500, Transponder series (T-series), Lambda (optical line) systems and DCN environments
-Seeing Ethernet traffic being converted into light and pushed across long distances—it’s something you don’t fully appreciate until you see it live.
+This is what powers cloud infrastructure like Amazon, Google and Azure, ever growing video streaming, global internet traffic and AI workloads.
 
 **Future: With AI and large-scale compute**
 
@@ -146,4 +107,9 @@ Honestly, it wouldn’t be surprising if more of the data center fabric itself b
 Today, every packet you send, gets converted into light travelling across oceans, sharing fiber with dozens of other signals and finally reaching the destination in milliseconds.
 And all of this happens silently, reliably, at massive scale.
 
-That’s the internet we use every day and the power of networking.
+That’s the internet we use every day and the power of networking. Light.
+
+**About Author:**
+
+Karthikeyan worked on Fujistu 1finity products like Flashwave 9500, Transponder series (T-series), Lambda (optical line) systems and DCN environments
+Seeing Ethernet traffic being converted into light and pushed across long distances—it’s something people don’t fully appreciate until they see it live.
