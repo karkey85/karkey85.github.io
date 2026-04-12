@@ -56,7 +56,13 @@ You can think of a transponder as a high-performance translator between two doma
 
 ---
 
-This packet-to-optical conversion layer is what enables routers sitting in data centers or POPs to seamlessly communicate across continents without ever “knowing” the complexity of the optical transport underneath.
+This packet-to-optical conversion layer is what enables routers sitting in data centers or POPs to seamlessly communicate across continents without ever “knowing” the complexity of the optical transport underneath. Ethernet traffic from a router enters the transponder where the short reach grey signal is terminated and the raw Ethernet frames are mapped into an OTN (Optical Transport Network) wrapper (like an OTU4 or ASU) and heavy duty Forward Error Correction are injected. The data is modulateed onto a specific DWDM Wavelength to be sent to the Mux and OLS. At the far end, the reverse happens.
+
+**The Core Idea: DWDM**
+
+The real power of optical networks comes from Dense Wavelength Division Multiplexing (DWDM). Instead of sending just one signal per fiber, DWDM allows multiple signals to coexist. Each signal is carried on a different wavelength (color of light). In a single fiber, sometimes 80+ wavelengths are sent and each wavelength can carry 100G, 400G or 800G (modern systems) which means a single fiber can carry multiple terabits per second.
+
+That’s the real backbone of the internet.
 
 **Long Distance: Amplification Matters**
 
