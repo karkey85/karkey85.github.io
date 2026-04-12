@@ -3,45 +3,26 @@
 
 ## From Ethernet Packets to Light: How Data Travels 12,000 km Across Oceans
 
-Ever wondered how you’re able to make a voice or video call from your home to the farthest corner of the world?
-Most of the time, the voice is crystal clear and the video quality is surprisingly good. That’s the power of the internetwork of networks—the Internet.
-We often say the Internet is the highway. But what really matters is who is driving on that highway and how efficiently the traffic is handled. That’s what decides latency, throughput and overall experience.
+Ever wondered how you’re able to make a voice or video call from your home to the farthest corner of the world? Most of the time, the voice is crystal clear and the video quality is surprisingly good. That’s the power of the internetwork of networks—the Internet. We often say the Internet is the highway. But what really matters is who is driving on that highway and how efficiently the traffic is handled. That’s what decides latency, throughput and overall experience.
 
-Now, this is where it hits differently for a network engineer.
+Now, this is where it hits differently for a person who has this question. How does a packet—whether it’s a video call, a WhatsApp message or a LinkedIn post—travel from New York to Chennai (over 12,000 km away) in just a second or two?
 
-How does a packet—whether it’s a voice call, a WhatsApp message or a LinkedIn post—travel from New York to Chennai (over 12,000 km away) in just a second or two?
-
-Your guess is right.
-
-Light.
-
-The fastest known thing in the universe. A clear winner in any race.
-
-But just saying “light” is not enough.
-That doesn’t explain the engineering, design and systems that make this possible at a global scale.
+Your guess is right. Light—the fastest phenomenon known to science, whose speed is the universe’s ultimate speed limit.  However, simply saying “light” is not sufficient; let us delve deeper into the engineering, design and systems that make this possible on a global scale.
 
 **Copper Has Limits, Optical Fiber Changes the Game**
 
-For a network engineer, Ethernet over copper—CAT5(e)/CAT6(a)/CAT7/CAT8—is almost second nature. It’s the default medium for connecting routers, switches and end devices in LAN environments.
-But copper has very well-defined physical limits.
+For any network engineer, Ethernet over copper is almost second nature. It is the default medium for connecting routers, switches and end devices in LAN environments. But copper has very well-defined physical limits. In standard Ethernet (1000BASE-T, 10GBASE-T), the maximum supported distance is ~100 meters which is not arbitrary but rather dictated by signal attenuation, noise, crosstalk (NEXT/FEXT) and timing constraints. As distance increases, the signal degrades, leading to higher bit error rates, frame corruption and eventually link failure. From a design perspective, copper is optimized for short-reach, high-speed communication within a confined space but not for long-haul transport.
 
-In standard Ethernet (1000BASE-T, 10GBASE-T), the maximum supported distance is ~100 meters. This is not arbitrary—it’s dictated by signal attenuation, noise, crosstalk (NEXT/FEXT) and timing constraints. As distance increases, the signal degrades, leading to higher bit error rates, frame corruption and eventually link failure.
-
-So from a design perspective, copper is optimized for short-reach, high-speed communication within a confined space—not for long-haul transport.
-
-This is where optical fiber fundamentally changes the game.
-
-Instead of electrical signaling, fiber operates in the optical domain—using light propagated through glass. The attenuation characteristics are orders of magnitude better than copper (typically ~0.2 dB/km in modern single-mode fiber).
+This is where optical fiber fundamentally changes the game. Instead of electrical signaling, fiber operates in the optical domain using light propagated through glass. The attenuation characteristics are orders of magnitude better than copper (typically ~0.2 dB/km in modern single-mode fiber).
 
 Because of this:
 
-* Signals can travel **80–100 km without regeneration** in standard long-haul systems
-* With optical amplification (like EDFA), spans can be extended significantly
-* In multi-span systems with amplification chains, signals routinely travel **thousands of kilometers (3000+ km)**
-* Submarine cable systems, with carefully engineered amplification stages, easily extend beyond **10,000–12,000 km**
+* Signals can travel 80–100 km without regeneration in standard long-haul systems.
+* With optical amplification (like EDFA), spans can be extended significantly.
+* In multi-span systems with amplification chains, signals routinely travel thousands of kilometers (3000+ km)
+* Submarine cable systems, with carefully engineered amplification stages, easily extend beyond 10,000–12,000 km.
 
-This is the physical foundation of the global internet—**optical fiber laid across continents and ocean floors, carrying massive volumes of data as light**.
-
+This is the physical foundation of the global internet—optical fiber laid across continents and ocean floors, carrying massive volumes of data as light.
 
 **Routers Speak Packet, but Transponders talk Light**
 
@@ -56,9 +37,7 @@ So the obvious question is:
 
 ---
 
-This is where dedicated optical transport platforms come into the picture.
-
-Vendors like Fujitsu, Ciena and others build carrier-grade systems specifically for this purpose.
+This is where dedicated optical transport platforms come into the picture. Vendors like Fujitsu, Ciena and others build carrier-grade systems specifically for this purpose.
 
 Typical examples include:
 
@@ -72,13 +51,12 @@ These systems act as **transponders/muxponders**, forming the bridge between pac
 
 You can think of a transponder as a high-performance translator between two domains:
 
-* Client side → Ethernet/IP/MPLS (from routers/switches)
+* Client side → Ethernet/IP/MPLS (from routers/switches) via a Grey Optic (QSFP28 or QSFP-DD pluggable)
 * Line side → Coherent optical wavelengths (for DWDM systems)
 
 ---
 
-This packet-to-optical conversion layer is what enables routers sitting in data centers or POPs to seamlessly communicate across continents—without ever “knowing” the complexity of the optical transport underneath.
-
+This packet-to-optical conversion layer is what enables routers sitting in data centers or POPs to seamlessly communicate across continents without ever “knowing” the complexity of the optical transport underneath.
 
 **Long Distance: Amplification Matters**
 
@@ -88,30 +66,25 @@ Even with fiber, signals don’t stay perfect forever. Since they weaken over di
 
 The entire journey so far is simplified:
 
-
 ![PacketOpticsFlow](../img/2026-04-11/ethernetp-optical-flow.drawio.png)
 
 That’s our packet’s journey across continents.
 
 **How Much Data Are We Talking?**
 
-This part is crazy when you think about scale.
-
-Single wavelength: up to 800G (and moving towards 1.6T)
-Single fiber: 10–20 Tbps and beyond
-With advanced systems: even higher using dense channel packing
-
-This is what powers cloud infrastructure like Amazon, Google and Azure, ever growing video streaming, global internet traffic and AI workloads.
+This is where the scale of modern optical systems really stands out. A single coherent wavelength today can carry up to 800G, with next-generation systems already pushing toward 1.2T–1.6T using advanced modulation and DSP techniques. When multiple wavelengths are multiplexed over a single fiber using DWDM, total capacity scales to 10–20 Tbps and beyond, and with tighter channel spacing and improved spectral efficiency, it can go even higher. This level of capacity is what underpins hyperscale cloud infrastructure from companies like Amazon, Google, and Microsoft, while also sustaining ever-growing video streaming demand, global internet traffic, and data-intensive AI workloads.
 
 **Future: With AI and large-scale compute**
 
 Data center traffic is exploding. East-west traffic is massive. Bandwidth demand keeps increasing. There’s already movement toward tighter integration between Ethernet and optics. Companies like Arrcus working with optical platforms like Fujitsu’s 1FINITY is one such example.
 Honestly, it wouldn’t be surprising if more of the data center fabric itself becomes optical over time.
 
-Today, every packet you send, gets converted into light travelling across oceans, sharing fiber with dozens of other signals and finally reaching the destination in milliseconds.
-And all of this happens silently, reliably, at massive scale.
+Today, every packet you send, gets converted into light travelling across oceans, sharing fiber with dozens of other signals and finally reaching the destination in milliseconds. And all of this happens silently, reliably, at massive scale.
 
-That’s the internet we use every day and the power of networking. Light.
+That’s the internet we use every day and the power of networking. Lights everywhere.
+
+**References:**
+https://en.acnnewswire.com/press-release/english/87318/kddi,-cisco,-and-fujitsu-start-full-scale-operation-of-telecommunications-network-to-reduce-power-consumption-by-approximately-40
 
 
 **About Author:**
