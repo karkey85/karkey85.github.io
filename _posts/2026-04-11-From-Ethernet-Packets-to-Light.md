@@ -4,8 +4,8 @@
 ## From Ethernet Packets to Light: How Data Travels 12,000 km Across Oceans
 
 Ever wondered how you’re able to make a voice or video call from your home to the farthest corner of the world?
-Most of the time, the voice is crystal clear, and the video quality is surprisingly good. That’s the power of the internetwork of networks—the Internet.
-We often say the Internet is the highway. But what really matters is who is driving on that highway and how efficiently the traffic is handled. That’s what decides latency, throughput, and overall experience.
+Most of the time, the voice is crystal clear and the video quality is surprisingly good. That’s the power of the internetwork of networks—the Internet.
+We often say the Internet is the highway. But what really matters is who is driving on that highway and how efficiently the traffic is handled. That’s what decides latency, throughput and overall experience.
 
 Now, this is where it hits differently for a network engineer.
 
@@ -18,14 +18,14 @@ Light.
 The fastest known thing in the universe. A clear winner in any race.
 
 But just saying “light” is not enough.
-That doesn’t explain the engineering, design, and systems that make this possible at a global scale.
+That doesn’t explain the engineering, design and systems that make this possible at a global scale.
 
 **Copper Has Limits, Optical Fiber Changes the Game**
 
-For a network engineer, Ethernet over copper—CAT5(e)/CAT6(a)/CAT7/CAT8—is almost second nature. It’s the default medium for connecting routers, switches, and end devices in LAN environments.
+For a network engineer, Ethernet over copper—CAT5(e)/CAT6(a)/CAT7/CAT8—is almost second nature. It’s the default medium for connecting routers, switches and end devices in LAN environments.
 But copper has very well-defined physical limits.
 
-In standard Ethernet (1000BASE-T, 10GBASE-T), the maximum supported distance is ~100 meters. This is not arbitrary—it’s dictated by signal attenuation, noise, crosstalk (NEXT/FEXT), and timing constraints. As distance increases, the signal degrades, leading to higher bit error rates, frame corruption, and eventually link failure.
+In standard Ethernet (1000BASE-T, 10GBASE-T), the maximum supported distance is ~100 meters. This is not arbitrary—it’s dictated by signal attenuation, noise, crosstalk (NEXT/FEXT) and timing constraints. As distance increases, the signal degrades, leading to higher bit error rates, frame corruption and eventually link failure.
 
 So from a design perspective, copper is optimized for short-reach, high-speed communication within a confined space—not for long-haul transport.
 
@@ -40,7 +40,7 @@ Because of this:
 * In multi-span systems with amplification chains, signals routinely travel **thousands of kilometers (3000+ km)**
 * Submarine cable systems, with carefully engineered amplification stages, easily extend beyond **10,000–12,000 km**
 
-This is the physical foundation of the global internet—**optical fiber laid across continents and ocean floors, carrying massive volumes of data as light**.**
+This is the physical foundation of the global internet—**optical fiber laid across continents and ocean floors, carrying massive volumes of data as light**.
 
 
 **Routers Speak Packet, but Transponders talk Light**
@@ -88,7 +88,8 @@ Even with fiber, signals don’t stay perfect forever. Since they weaken over di
 
 The entire journey so far is simplified:
 
-Router → Transponder → Optical Line System → Fiber(under ocean) → Optical Line System → Transponder → Router
+
+![PacketOpticsFlow](../img/2026-04-11/ethernetp-optical-flow.drawio.png)
 
 That’s our packet’s journey across continents.
 
@@ -111,6 +112,7 @@ Today, every packet you send, gets converted into light travelling across oceans
 And all of this happens silently, reliably, at massive scale.
 
 That’s the internet we use every day and the power of networking. Light.
+
 
 **About Author:**
 
