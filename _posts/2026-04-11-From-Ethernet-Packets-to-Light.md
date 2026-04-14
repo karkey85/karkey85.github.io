@@ -24,6 +24,9 @@ Because of this:
 
 This is the physical foundation of the global internet—optical fiber laid across continents and ocean floors, carrying massive volumes of data as light.
 
+![OpticalRouter](../img/2026-04-11/kirill-sh-ZHZRG5CLRlY-unsplash.jpg)
+Photo by <a href="https://unsplash.com/@kirill2020?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Kirill Sh</a> on <a href="https://unsplash.com/photos/ZHZRG5CLRlY?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+      
 **Routers Speak Packet, but Transponders talk Light**
 
 In real-world deployments, high-end routers and switches from vendors like Cisco and Arista operate purely in the packet domain. Typically, Cisco ASR 9000 Series or Cisco NCS 5500 Series in a service provider core and Arista 7500R Series or Arista 7800R Series in data center spine/core fall under this segment.
