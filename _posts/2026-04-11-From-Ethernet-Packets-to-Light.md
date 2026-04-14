@@ -1,77 +1,63 @@
 
 ![Digital World](../img/2026-04-11/digital_world.png)
+Picture Courtesy: Google Gemini
 
-## From Ethernet Packets to Light: How Data Travels 12,000 km Across Oceans
+# From Ethernet Packets to Light: How Data Travels 12,000 km Across Oceans
 
-Ever wondered how you’re able to make a voice or video call from your home to the farthest corner of the world? Most of the time, the voice is crystal clear and the video quality is surprisingly good. That’s the power of the internetwork of networks—the Internet. We often say the Internet is the highway. But what really matters is who is driving on that highway and how efficiently the traffic is handled. That’s what decides latency, throughput and overall experience.
+Have you ever wondered how a voice or video call travels from your home to the farthest corner of the globe? Regardless of the distance, the audio remains crystal clear and the video quality remarkably stable. This is the power of the "network of networks"—the Internet. While the Internet is described as a global highway, the true engineering marvel lies in how the traffic is managed and who is "driving" on that highway. These factors ultimately dictate latency, throughput, and the overall user experience.
 
-Now, this is where it hits differently for a person who has this question. How does a packet—whether it’s a video call, a WhatsApp message or a LinkedIn post—travel from New York to Chennai (over 12,000 km away) in just a second or two?
+To put this into perspective, consider a single data packet whether it is a video stream, a message, or a social media post. How does it travel from New York to Chennai—a distance of over 12,000 km—in a mere fraction of a second?
 
-Your guess is right. Light—the fastest phenomenon known to science, whose speed is the universe’s ultimate speed limit.  However, simply saying “light” is not sufficient; let us delve deeper into the engineering, design and systems that make this possible on a global scale.
+The answer lies in **light**, the fastest phenomenon known to science, whose speed is the universe’s ultimate limit. However, light alone is only half the story. To understand this global feat, we must delve deeper into the sophisticated engineering, architectural design, and complex systems that harness the speed of light to make this possible on a global scale.
 
-**Copper Has Limits, Optical Fiber Changes the Game**
+## **Copper Has Limits, Optical Fiber Changes the Game**
 
-For any network engineer, Ethernet over copper is almost second nature. It is the default medium for connecting routers, switches and end devices in LAN environments. But copper has very well-defined physical limits. In standard Ethernet (1000BASE-T, 10GBASE-T), the maximum supported distance is ~100 meters which is not arbitrary but rather dictated by signal attenuation, noise, crosstalk (NEXT/FEXT) and timing constraints. As distance increases, the signal degrades, leading to higher bit error rates, frame corruption and eventually link failure. From a design perspective, copper is optimized for short-reach, high-speed communication within a confined space but not for long-haul transport.
+Ethernet over copper has served as the default medium for connecting routers, switches, and end devices in LAN environments for several decades. However, copper is subject to well-defined physical limitations. In standard Ethernet (1000BASE-T, 10GBASE-T), the maximum supported distance is approximately 100 meters. This limit is not arbitrary; rather, it is dictated by signal attenuation, noise, crosstalk (NEXT/FEXT), and timing constraints.
 
-This is where optical fiber fundamentally changes the game. Instead of electrical signaling, fiber operates in the optical domain using light propagated through glass. The attenuation characteristics are orders of magnitude better than copper (typically ~0.2 dB/km in modern single-mode fiber).
+From a design perspective, copper is optimized for short-reach, high-speed communication within confined spaces rather than long-haul transport. Conversely, optical fiber exhibits attenuation characteristics that are orders of magnitude superior to copper (typically ~0.2 dB/km in modern single-mode fiber) by operating in the optical domain using light.
 
-Because of this:
+**This technical advantage translates to:**
 
-* Signals can travel 80–100 km without regeneration in standard long-haul systems.
-* With optical amplification (like EDFA), spans can be extended significantly.
-* In multi-span systems with amplification chains, signals routinely travel thousands of kilometers (3000+ km)
-* Submarine cable systems, with carefully engineered amplification stages, easily extend beyond 10,000–12,000 km.
+* **Unregenerated reach of 80–100 km**, allowing optical signals to span vast distances without the need for active electronic processing.
+* **Extended span capabilities** through the use of optical amplification, such as **EDFA** (Erbium-Doped Fiber Amplifier) or **Raman Amplifiers**.
+* **Global reach via multi-span systems**, where amplification chains allow signals to routinely travel thousands of kilometers **(3,000+ km)** while remaining in the optical domain.
+* **Transoceanic connectivity** through submarine cable systems, which utilize carefully engineered amplification stages to easily extend beyond **10,000–12,000 km**.
 
 This is the physical foundation of the global internet—optical fiber laid across continents and ocean floors, carrying massive volumes of data as light.
 
 ![OpticalRouter](../img/2026-04-11/kirill-sh-ZHZRG5CLRlY-unsplash.jpg)
 Photo by <a href="https://unsplash.com/@kirill2020?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Kirill Sh</a> on <a href="https://unsplash.com/photos/ZHZRG5CLRlY?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-      
-**Routers Speak Packet, but Transponders talk Light**
 
-In real-world deployments, high-end routers and switches from vendors like Cisco and Arista operate purely in the packet domain. Typically, Cisco ASR 9000 Series or Cisco NCS 5500 Series in a service provider core and Arista 7500R Series or Arista 7800R Series in data center spine/core fall under this segment.
-These platforms process and forward **Ethernet/IP/MPLS packets** at very high throughput (100G/400G and beyond), but fundamentally, they operate in the **electrical domain (or short-reach optics like SR/LR pluggables)**.
+## **Routers Speak Packets, but Transponders Speak Light**
 
-They are not designed to drive long-haul optical signals across hundreds or thousands of kilometers.
+In real-world deployments, high-end routers and switches from vendors like Cisco and Arista operate purely in the packet domain. Typically, the **Cisco ASR 9000 Series** or **Cisco NCS 5500 Series** in a service provider core, and the **Arista 7500R Series** or **Arista 7800R Series** in a data center spine/core, fall under this segment. These platforms process and forward Ethernet/IP/MPLS packets at very high throughput (**100G/400G and beyond**); however, they fundamentally operate in the electrical domain (or via client-side optics like Short Range /LR pluggables). They are not designed to drive long-haul optical signals across hundreds or thousands of kilometers.
 
-So the obvious question is:
-
-**Where does the transition from packet domain to long-haul optical domain actually happen?**
+So, the obvious question is: where does the transition from the packet domain to the long-haul optical domain actually happen?
 
 ---
 
-This is where dedicated optical transport platforms come into the picture. Vendors like Fujitsu, Ciena and others build carrier-grade systems specifically for this purpose.
+Vendors like Fujitsu, Ciena and others build carrier-grade optical transport platforms specifically for this purpose. Fujitsu 1FINITY T-Series, Ciena Waveserver 5, Ciena 6500 Packet-Optical Platform to name a few. These systems act as **transponders/muxponders**, forming the bridge between packet networks and optical transport networks.
 
-Typical examples include:
+Think of a transponder as a high-performance translator between two domains:
 
-* Fujitsu 1FINITY T-Series
-* Ciena Waveserver 5
-* Ciena 6500 Packet-Optical Platform
+* **Client side → Ethernet/IP/MPLS from routers/switches via a Grey Optic (QSFP28 or QSFP-DD pluggable)**: This interface serves as the handoff between the packet-switching layer and the transport layer. It typically uses "Grey Optics"—standard, single-wavelength pluggables—to carry high-capacity traffic over short distances within the data center or central office.
 
-These systems act as **transponders/muxponders**, forming the bridge between packet networks and optical transport networks.
+* **Line side → Coherent optical wavelengths for Dense Wavelength Division Multiplexing (DWDM) systems**: This is where the transition to long-haul occurs. The "Line side" utilizes DWDM, a core technology that multiplexes multiple data streams onto a single fiber by assigning each to a specific, high-precision wavelength (or "color") of light.
 
 ---
 
-You can think of a transponder as a high-performance translator between two domains:
+This packet-to-optical conversion layer is what enables routers sitting in data centers or POPs to seamlessly communicate across continents without ever “knowing” the complexity of the optical transport underneath. Ethernet traffic from a router enters the transponder where the short reach grey signal is terminated and the raw Ethernet frames are mapped into an OTN (Optical Transport Network) wrapper (like an OTU4).
 
-* Client side → Ethernet/IP/MPLS (from routers/switches) via a Grey Optic (QSFP28 or QSFP-DD pluggable)
-* Line side → Coherent optical wavelengths (for DWDM systems)
+![dwdm](../img/2026-04-11/dwdm.jpg)
+## **The Core Idea: DWDM**
 
----
-
-This packet-to-optical conversion layer is what enables routers sitting in data centers or POPs to seamlessly communicate across continents without ever “knowing” the complexity of the optical transport underneath. Ethernet traffic from a router enters the transponder where the short reach grey signal is terminated and the raw Ethernet frames are mapped into an OTN (Optical Transport Network) wrapper (like an OTU4 or ASU) and heavy duty Forward Error Correction are injected. The data is modulateed onto a specific DWDM Wavelength to be sent to the Mux and OLS. At the far end, the reverse happens.
-
-**The Core Idea: DWDM**
-
-The real power of optical networks comes from Dense Wavelength Division Multiplexing (DWDM). Instead of sending just one signal per fiber, DWDM allows multiple signals to coexist. Each signal is carried on a different wavelength (color of light). In a single fiber, sometimes 80+ wavelengths are sent and each wavelength can carry 100G, 400G or 800G (modern systems) which means a single fiber can carry multiple terabits per second.
+Instead of sending just one signal per fiber, DWDM allows multiple signals to coexist. Each signal is carried on a different wavelength (color of light). In a single fiber, sometimes 80+ wavelengths are sent and each wavelength can carry 100G, 400G or 800G (modern systems) which means a single fiber can carry multiple terabits per second.
 
 That’s the real backbone of the internet.
 
-**Long Distance: Amplification Matters**
+## **Long Distance: Amplification Matters**
 
-Even with fiber, signals don’t stay perfect forever. Since they weaken over distance, we use optical amplifiers (like EDFA) or Raman amplification (used in long-haul systems to boost signal quality). These are placed at intervals across the fiber—especially in submarine cables. This is what allows signals to travel thousands of kilometers without being converted back to electrical form. This is where Fujitsu 1FINITY L-Series blades come into picture.
-
-**End-to-End Flow (Putting It Together)**
+Even with fiber, signals don’t stay perfect forever. Since they weaken over distance, optical amplifiers (like EDFA) or Raman amplifiers are used. These are placed at intervals across the fiber especially in submarine cables. This is what allows signals to travel thousands of kilometers without being converted back to electrical form. This is where Fujitsu 1FINITY L-Series blades come into picture.
 
 The entire journey so far is simplified:
 
@@ -79,24 +65,29 @@ The entire journey so far is simplified:
 
 That’s our packet’s journey across continents.
 
-**How Much Data Are We Talking?**
+## **How Much Data Are We Talking?**
 
-This is where the scale of modern optical systems really stands out. A single coherent wavelength today can carry up to 800G, with next-generation systems already pushing toward 1.2T–1.6T using advanced modulation and DSP techniques. When multiple wavelengths are multiplexed over a single fiber using DWDM, total capacity scales to 10–20 Tbps and beyond, and with tighter channel spacing and improved spectral efficiency, it can go even higher. This level of capacity is what underpins hyperscale cloud infrastructure from companies like Amazon, Google, and Microsoft, while also sustaining ever-growing video streaming demand, global internet traffic, and data-intensive AI workloads.
+This is where the scale of modern optical systems really stands out. A single coherent wavelength today can carry up to 800G, with next-generation systems already pushing toward 1.2T–1.6T using advanced modulation and DSP techniques. When multiple wavelengths are multiplexed over a single fiber using DWDM, total capacity scales to 10–20 Tbps and beyond and with tighter channel spacing and improved spectral efficiency, it can go even higher. This level of capacity is what underpins hyperscale cloud infrastructure from companies like Amazon, Google and Microsoft, while also sustaining ever-growing video streaming demand, global internet traffic and data-intensive AI workloads.
 
-**Future: With AI and large-scale compute**
+## **Future: With AI and large-scale compute**
 
-Data center traffic is exploding. East-west traffic is massive. Bandwidth demand keeps increasing. There’s already movement toward tighter integration between Ethernet and optics. Companies like Arrcus working with optical platforms like Fujitsu’s 1FINITY is one such example.
-Honestly, it wouldn’t be surprising if more of the data center fabric itself becomes optical over time.
+Data center traffic is exploding with massive east-west flows and an insatiable demand for bandwidth. As a result, we are seeing a shift toward tighter integration between Ethernet and optics. Next-generation network innovators like **Arrcus**, collaborating with optical leaders like **Fujitsu and their 1FINITY platform**, are prime examples of this evolution. It wouldn’t be surprising if more of the data center fabric itself becomes entirely optical over time.
 
-Today, every packet you send, gets converted into light travelling across oceans, sharing fiber with dozens of other signals and finally reaching the destination in milliseconds. And all of this happens silently, reliably, at massive scale.
+This transition to light is even moving beyond our planet. **NASA’s Lunar Laser Communications Demonstration (LLCD)** has already made history by using pulsed laser beams to transmit data over the **239,000 miles** between the Moon and Earth at a record-breaking download rate of **622 Mbps**. This proves that whether in a sub-sea fiber or across the vacuum of space, light is the ultimate vehicle for information.
 
-That’s the internet we use every day and the power of networking. Lights everywhere.
+Today, every packet you send is converted into light, traveling across oceans, sharing fiber with dozens of other signals, and reaching its destination in milliseconds. All of this happens silently, reliably, and at a massive scale.
 
-**References:**
-https://en.acnnewswire.com/press-release/english/87318/kddi,-cisco,-and-fujitsu-start-full-scale-operation-of-telecommunications-network-to-reduce-power-consumption-by-approximately-40
+That is the Internet we use every day and the true power of networking. **Lights everywhere**.
+
+![Laser](../img/2026-04-11/laser-ai.jpg)
+## **References:**
+
+1. https://en.acnnewswire.com/press-release/english/87318/kddi,-cisco,-and-fujitsu-start-full-scale-operation-of-telecommunications-network-to-reduce-power-consumption-by-approximately-40
+2. https://arrcus.com/news/fujitsu-1finity-and-arrcus-sign-strategic-partnership-agreement-to-deliver-innovative-network-solutions-for-ai-infrastructure
+3. https://www.qsfptek.com/qt-news/transponder-fiber-optical-repeater-for-dwdm-system.html?srsltid=AfmBOoqOCC5K0XbvWM3fFQZt-8DHxFnzO6OO41cHAuz4iUK1ixqUApNA
+4. https://www.nasa.gov/missions/tech-demonstration/laser-communications-relay/nasa-laser-communications-system-sets-record-with-data-transmissions-to-and-from-moon/
 
 
 **About Author:**
 
-Karthikeyan worked on Fujistu 1finity products like Flashwave 9500, Transponder series (T-series), Lambda (optical line) systems and DCN environments
-Seeing Ethernet traffic being converted into light and pushed across long distances—it’s something people don’t fully appreciate until they see it live.
+Karthikeyan is currently working in Vantiva Broadband as Principal Software Engineer. He worked on Fujistu 1FINITY products like Flashwave 9500, Transponder series (T-series), Lambda (optical line) systems contributing in DCN side and was part of Cisco's Connected Device Business Unit. He worked on CDMA 1xEVDO protocols teams during initial deployments of FemtoCells in Airvana Networks(now Commscope).
