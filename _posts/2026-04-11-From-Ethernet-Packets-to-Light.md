@@ -4,15 +4,15 @@ Picture Courtesy: Google Gemini
 
 # From Ethernet Packets to Light: How Data Travels 12,000 km Across Oceans
 
-Have you ever wondered how a voice or video call travels from your home to the farthest corner of the globe? Regardless of the distance, the audio remains crystal clear and the video quality remarkably stable. This is the power of the "network of networks"—the Internet. While the Internet is described as a global highway, the true engineering marvel lies in how the traffic is managed and who is "driving" on that highway. These factors ultimately dictate latency, throughput, and the overall user experience.
+Have you ever wondered how a voice or video call travels from your home to the farthest corner of the globe? Regardless of the distance, the audio remains crystal clear and the video quality remarkably stable. This is the power of the "network of networks"—the Internet. While the Internet is described as a global highway, the true engineering marvel lies in how the traffic is managed and who is "driving" on that highway. These factors ultimately dictate latency, throughput and the overall user experience.
 
 To put this into perspective, consider a single data packet whether it is a video stream, a message, or a social media post. How does it travel from New York to Chennai—a distance of over 12,000 km—in a mere fraction of a second?
 
-The answer lies in **light**, the fastest phenomenon known to science, whose speed is the universe’s ultimate limit. However, light alone is only half the story. To understand this global feat, we must delve deeper into the sophisticated engineering, architectural design, and complex systems that harness the speed of light to make this possible on a global scale.
+The answer lies in **light**, the fastest phenomenon known to science, whose speed is the universe’s ultimate limit. However, light alone is only half the story. To understand this global feat, we must delve deeper into the sophisticated engineering, architectural design and complex systems that harness the speed of light to make this possible on a global scale.
 
 ## **Copper Has Limits, Optical Fiber Changes the Game**
 
-Ethernet over copper has served as the default medium for connecting routers, switches, and end devices in LAN environments for several decades. However, copper is subject to well-defined physical limitations. In standard Ethernet (1000BASE-T, 10GBASE-T), the maximum supported distance is approximately 100 meters. This limit is not arbitrary; rather, it is dictated by signal attenuation, noise, crosstalk (NEXT/FEXT), and timing constraints.
+Ethernet over copper has served as the default medium for connecting routers, switches and end devices in LAN environments for several decades. However, copper is subject to well-defined physical limitations. In standard Ethernet (1000BASE-T, 10GBASE-T), the maximum supported distance is approximately 100 meters. This limit is not arbitrary; rather, it is dictated by signal attenuation, noise, crosstalk (NEXT/FEXT) and timing constraints.
 
 From a design perspective, copper is optimized for short-reach, high-speed communication within confined spaces rather than long-haul transport. Conversely, optical fiber exhibits attenuation characteristics that are orders of magnitude superior to copper (typically ~0.2 dB/km in modern single-mode fiber) by operating in the optical domain using light.
 
@@ -30,7 +30,7 @@ Photo by <a href="https://unsplash.com/@kirill2020?utm_source=unsplash&utm_mediu
 
 ## **Routers Speak Packets, but Transponders Speak Light**
 
-In real-world deployments, high-end routers and switches from vendors like Cisco and Arista operate purely in the packet domain. Typically, the **Cisco ASR 9000 Series** or **Cisco NCS 5500 Series** in a service provider core, and the **Arista 7500R Series** or **Arista 7800R Series** in a data center spine/core, fall under this segment. These platforms process and forward Ethernet/IP/MPLS packets at very high throughput (**100G/400G and beyond**); however, they fundamentally operate in the electrical domain (or via client-side optics like Short Range /LR pluggables). They are not designed to drive long-haul optical signals across hundreds or thousands of kilometers.
+In real-world deployments, high-end routers and switches from vendors like Cisco and Arista operate purely in the packet domain. Typically, the **Cisco ASR 9000 Series** or **Cisco NCS 5500 Series** in a service provider core and the **Arista 7500R Series** or **Arista 7800R Series** in a data center spine/core, fall under this segment. These platforms process and forward Ethernet/IP/MPLS packets at very high throughput (**100G/400G and beyond**); however, they fundamentally operate in the electrical domain (or via client-side optics like Short Range /LR pluggables). They are not designed to drive long-haul optical signals across hundreds or thousands of kilometers.
 
 So, the obvious question is: where does the transition from the packet domain to the long-haul optical domain actually happen?
 
@@ -75,7 +75,7 @@ Data center traffic is exploding with massive east-west flows and an insatiable 
 
 This transition to light is even moving beyond our planet. **NASA’s Lunar Laser Communications Demonstration (LLCD)** has already made history by using pulsed laser beams to transmit data over the **239,000 miles** between the Moon and Earth at a record-breaking download rate of **622 Mbps**. This proves that whether in a sub-sea fiber or across the vacuum of space, light is the ultimate vehicle for information.
 
-Today, every packet you send is converted into light, traveling across oceans, sharing fiber with dozens of other signals, and reaching its destination in milliseconds. All of this happens silently, reliably, and at a massive scale.
+Today, every packet you send is converted into light, traveling across oceans, sharing fiber with dozens of other signals and reaching its destination in milliseconds. All of this happens silently, reliably and at a massive scale.
 
 That is the Internet we use every day and the true power of networking. **Lights everywhere**.
 
