@@ -193,3 +193,14 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+comments:
+  active: giscus
+  giscus:
+    repo: "karkey85/karkey85.github.io"
+    repo_id: "R_kgDOJ8MUew"
+    category: "General"
+    category_id: "DIC_kwDOJ8MUe84C7GLg"
+    mapping: "pathname"
+    input_position: "bottom"
+    lang: "en"
