@@ -3,8 +3,6 @@ title: ""
 icon: fas fa-user
 order: 1
 ---
-<img src="/img/2026-04-11/digital_world.png" style="width: auto; height: auto;">
-
 
 Karthikeyan Arulmozhivarman is currently working in Vantiva Broadband as Principal Software Engineer. 
 
