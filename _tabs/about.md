@@ -12,4 +12,3 @@ He worked on Fujistu 1FINITY products like Flashwave 9500, Transponder series (T
 
 He worked on CDMA 1xEVDO protocols teams during initial deployments of FemtoCells in Airvana Networks(now Commscope).
 
----
