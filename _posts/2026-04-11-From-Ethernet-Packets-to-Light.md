@@ -58,11 +58,11 @@ That’s the real backbone of the internet.
 
 A typical DWDM system include these core components for its working:
 
-* **Optical transceivers:** converts electrical signals to grey optics.
-* **Transponders:** to map one client service onto specific wavelength (or color).
-* **Muxponders (mux or demux):** to combine multiple client service onto single high-capacity wavelength.
-* **Optical amplifiers:** to extend transmission reach over hundreds or thousands of kilometers.
-* **ROADMs (Reconfigurable Optical Add-Drop Multiplexers)**: to dynamically route and manage wavelengths (or colors) in the network.
+* **Optical transceivers:** convert electrical signals to grey optics.
+* **Transponders:** map one client service onto specific wavelength (or color).
+* **Muxponders (mux or demux):**  combine multiple client service onto single high-capacity wavelength.
+* **Optical amplifiers:**  extend transmission reach over hundreds or thousands of kilometers.
+* **ROADMs (Reconfigurable Optical Add-Drop Multiplexers):** dynamically route and manage wavelengths (or colors) in the network.
 
 A significant trend in modern architecture is IP over DWDM (IPoDWDM). By using coherent pluggable optics (like 400G ZR+) directly in the router, we can bypass the standalone Transponder stage entirely. This collapses the layers, allowing the router to transmit 'colored' wavelengths directly into the optical line system.
 
