@@ -40,24 +40,35 @@ Vendors like Fujitsu, Ciena and others build carrier-grade optical transport pla
 
 Think of a transponder as a high-performance translator between two domains:
 
-* **Client side → Ethernet/IP/MPLS from routers/switches via a Grey Optic (QSFP28 or QSFP-DD pluggable)**: This interface serves as the handoff between the packet-switching layer and the transport layer. It typically uses "Grey Optics"—standard, single-wavelength pluggables—to carry high-capacity traffic over short distances within the data center or central office.
+* **Client side → Ethernet/MPLS(Multi Protocol Label Switching) frames from routers/switches via a Grey Optic (QSFP28 or QSFP-DD pluggable)**: This interface serves as the handoff between the packet-switching layer and the transport layer. It typically uses "Grey Optics"—standard, single-wavelength pluggables—to carry high-capacity traffic over short distances within the data center or central office.
 
 * **Line side → Coherent optical wavelengths for Dense Wavelength Division Multiplexing (DWDM) systems**: This is where the transition to long-haul occurs. The "Line side" utilizes DWDM, a core technology that multiplexes multiple data streams onto a single fiber by assigning each to a specific, high-precision wavelength (or "color") of light.
 
 ---
 
-This packet-to-optical conversion layer is what enables routers sitting in data centers or POPs to seamlessly communicate across continents without ever “knowing” the complexity of the optical transport underneath. Ethernet traffic from a router enters the transponder where the short reach grey signal is terminated and the raw Ethernet frames are mapped into an OTN (Optical Transport Network) wrapper (like an OTU4).
+This packet-to-optical conversion layer is what enables routers sitting in data centers or Point Of Presence (PoPs) to seamlessly communicate across continents without ever “knowing” the complexity of the optical transport underneath. Ethernet traffic from a router enters the transponder where the short reach grey signal is terminated and the raw Ethernet frames are mapped into an OTN (Optical Transport Network) wrapper (like an OTU4).
 
 ![dwdm](../img/2026-04-11/dwdm.jpg)
+
 ## **The Core Idea: DWDM**
 
 Instead of sending just one signal per fiber, DWDM allows multiple signals to coexist. Each signal is carried on a different wavelength (color of light). In a single fiber, sometimes 80+ wavelengths are sent and each wavelength can carry 100G, 400G or 800G (modern systems) which means a single fiber can carry multiple terabits per second.
 
 That’s the real backbone of the internet.
 
+A typical DWDM system include these core components for its working:
+
+* **Optical transceivers:** converts electrical signals to grey optics.
+* **Transponders:** to map one client service onto specific wavelength (or color).
+* **Muxponders (mux or demux):** to combine multiple client service onto single high-capacity wavelength.
+* **Optical amplifiers:** to extend transmission reach over hundreds or thousands of kilometers.
+* **ROADMs (Reconfigurable Optical Add-Drop Multiplexers)**: to dynamically route and manage wavelengths (or colors) in the network.
+
+A significant trend in modern architecture is IP over DWDM (IPoDWDM). By using coherent pluggable optics (like 400G ZR+) directly in the router, we can bypass the standalone Transponder stage entirely. This collapses the layers, allowing the router to transmit 'colored' wavelengths directly into the optical line system.
+
 ## **Long Distance: Amplification Matters**
 
-Even with fiber, signals don’t stay perfect forever. Since they weaken over distance, optical amplifiers (like EDFA) or Raman amplifiers are used. These are placed at intervals across the fiber especially in submarine cables. This is what allows signals to travel thousands of kilometers without being converted back to electrical form. This is where Fujitsu 1FINITY L-Series blades come into picture.
+Even with fiber, signals don’t stay perfect forever. Since they weaken over distance, optical amplifiers (like EDFA) or Raman amplifiers are used. These are placed at intervals (~80-100km) across the fiber especially in submarine cables. It is fascinating that these amplifiers are powered using submarine cables which are wrapped in a copper sheath (along with the fiber optic cable) carrying high-voltage electricity from the shore stations on both sides. This amplification technique is what allows signals to travel thousands of kilometers without being converted back to electrical form. Fujitsu 1FINITY L-Series blades are ideally suited for this purpose.
 
 The entire journey so far is simplified:
 
@@ -67,7 +78,7 @@ That’s our packet’s journey across continents.
 
 ## **How Much Data Are We Talking?**
 
-This is where the scale of modern optical systems really stands out. A single coherent wavelength today can carry up to 800G, with next-generation systems already pushing toward 1.2T–1.6T using advanced modulation and DSP techniques. When multiple wavelengths are multiplexed over a single fiber using DWDM, total capacity scales to 10–20 Tbps and beyond and with tighter channel spacing and improved spectral efficiency, it can go even higher. This level of capacity is what underpins hyperscale cloud infrastructure from companies like Amazon, Google and Microsoft, while also sustaining ever-growing video streaming demand, global internet traffic and data-intensive AI workloads.
+This is where the scale of modern optical systems really stands out. A single coherent wavelength today can carry up to 800G, with next-generation systems already pushing toward 1.2T–1.6T using advanced modulation (16-QAM or 64-QAM) and Digital Signal Processing(DSP) techniques. When multiple wavelengths are multiplexed over a single fiber using DWDM, total capacity scales to 10–20 Tbps and beyond and with tighter channel spacing and improved spectral efficiency, it can go even higher. This level of capacity is what underpins hyperscale cloud infrastructure from companies like Amazon, Google and Microsoft, while also sustaining ever-growing video streaming demand, global internet traffic and data-intensive AI workloads.
 
 ## **Future: With AI and large-scale compute**
 
@@ -84,8 +95,9 @@ That is the Internet we use every day and the true power of networking. **Lights
 
 1. https://en.acnnewswire.com/press-release/english/87318/kddi,-cisco,-and-fujitsu-start-full-scale-operation-of-telecommunications-network-to-reduce-power-consumption-by-approximately-40
 2. https://arrcus.com/news/fujitsu-1finity-and-arrcus-sign-strategic-partnership-agreement-to-deliver-innovative-network-solutions-for-ai-infrastructure
-3. https://www.qsfptek.com/qt-news/transponder-fiber-optical-repeater-for-dwdm-system.html?srsltid=AfmBOoqOCC5K0XbvWM3fFQZt-8DHxFnzO6OO41cHAuz4iUK1ixqUApNA
-4. https://www.nasa.gov/missions/tech-demonstration/laser-communications-relay/nasa-laser-communications-system-sets-record-with-data-transmissions-to-and-from-moon/
+3. https://www.vcelink.com/blogs/focus/what-is-dwdm?srsltid=AfmBOopmc5Xx6RGcboeN1mV76dli4iOfQ7a5TK7R_1MkH3s6QNEBn-gK
+4. https://www.qsfptek.com/qt-news/transponder-fiber-optical-repeater-for-dwdm-system.html?srsltid=AfmBOoqOCC5K0XbvWM3fFQZt-8DHxFnzO6OO41cHAuz4iUK1ixqUApNA
+5. https://www.nasa.gov/missions/tech-demonstration/laser-communications-relay/nasa-laser-communications-system-sets-record-with-data-transmissions-to-and-from-moon/
 
 
 **About Author:**
