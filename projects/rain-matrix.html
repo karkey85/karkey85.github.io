@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<canvas id="game" width="500" height="300" style="border:2px solid black"></canvas>
+
+
+<script>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+
+
+// Box position
+let x = 200;
+let y = 200;
+
+let x1 = 200;
+let y1 = 10;
+let y2 = 20;
+const rain = [
+  { id: "5", x: 200, y: 10 },
+  { id: "6", x: 200, y: 20 },
+  { id: "7", x: 200, y: 30 },
+];
+
+// Draw box
+function draw() {
+
+  // Clear screen
+  //ctx.clearRect(0, 0, 500, 300);
+  // 1. Draw the black background
+   ctx.fillStyle = "black";
+   ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Draw red box
+  ctx.fillStyle = "lightgreen";
+
+for (let i = 0; i < rain.length; i++) {
+  ctx.fillText(rain[i].id, rain[i].x, rain[i].y);
+  rain[i].y+=10;
+  if (rain[i].y > 300) {
+    rain[i].y= 10;
+  }
+}
+}
+
+
+const timer = setInterval(() => {
+draw();
+}, 200);
+
+// First draw
+draw();
+
+</script>
+
+</body>
+</html>
