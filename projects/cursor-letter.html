@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Letter</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: black;
+            overflow: hidden;
+        }
+
+        #cursor-letter {
+            position: fixed;
+            color: cyan;
+            font-size: 30px;
+            font-weight: bold;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="cursor-letter">K</div>
+
+<script>
+    const letter = document.getElementById("cursor-letter");
+
+    document.addEventListener("mousemove", (e) => {
+        letter.style.left = e.clientX + 10 + "px";
+        letter.style.top = e.clientY + 10 + "px";
+    });
+</script>
+
+</body>
+</html>
