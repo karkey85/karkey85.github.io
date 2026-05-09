@@ -3,57 +3,56 @@
 
 <body>
 
-<canvas id="game" width="500" height="300" style="border:2px solid black"></canvas>
+<canvas id="matrix" width="500" height="300" ></canvas>
 
 
 <script>
-const canvas = document.getElementById("game");
+const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
+// 1. Initialize the array with objects
+const rainCount = 30;
+const rain = [];
+for (let i = 0; i < rainCount; i++) {
+    rain.push({
+        id: Math.random().toString(36).substring(2, 10), // random alphastrings
+        x: i * 16, // Spread columns across the canvas
+        y: Math.random() * -300, // Start at different heights off-screen
+        speed: 5 + Math.random() * 5,
+        size: 5 + Math.floor(Math.random() * 5)
+    });
+}
 
-// Box position
-let x = 200;
-let y = 200;
-
-let x1 = 200;
-let y1 = 10;
-let y2 = 20;
-const rain = [
-  { id: "5", x: 200, y: 10 },
-  { id: "6", x: 200, y: 20 },
-  { id: "7", x: 200, y: 30 },
-];
-
-// Draw box
 function draw() {
+    // 2. Draw black background.. yet to do trailing translucent effect
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // 3. set green font.. yet to do tamil font
+    ctx.fillStyle = "lightgreen";
+    //ctx.font = "14px monospace";
 
-  // Clear screen
-  //ctx.clearRect(0, 0, 500, 300);
-  // 1. Draw the black background
-   ctx.fillStyle = "black";
-   ctx.fillRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < rain.length; i++) {
+        let drop = rain[i];
+        
+        // 4. Draw every raindrop in a rainchain
+        for (let dcnt = 0; dcnt < drop.size; dcnt++) {
+            const char = drop.id[dcnt % drop.id.length];
+            ctx.fillText(char, drop.x, drop.y + (dcnt * 15));
+        }
 
-  // Draw red box
-  ctx.fillStyle = "lightgreen";
-
-for (let i = 0; i < rain.length; i++) {
-  ctx.fillText(rain[i].id, rain[i].x, rain[i].y);
-  rain[i].y+=10;
-  if (rain[i].y > 300) {
-    rain[i].y= 10;
-  }
+        drop.y += drop.speed;
+        // 5. reset raichain if completed.
+        if (drop.y > canvas.height) {
+            drop.y = -100;
+            drop.id = Math.random().toString(36).substring(2, 10);
+            drop.speed = 5 + Math.random() * 5;
+        }
+    }
 }
-}
 
-
-const timer = setInterval(() => {
-draw();
-}, 200);
-
-// First draw
-draw();
-
+setInterval(draw, 50);
 </script>
+
 
 </body>
 </html>
