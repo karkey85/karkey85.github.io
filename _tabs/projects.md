@@ -15,7 +15,11 @@ A collection of small JavaScript experiments and visual effects.
 A minimal cursor-following alphabet effect using JavaScript.
 
 ---
+## ✨ [Matrix Rain](/projects/rain-matrix.html)
 
+A minimal cursor-following alphabet effect using JavaScript.
+
+---
 ## 🎮 [JS Game](/projects/js-game.html)
 
 A small browser game built with JavaScript and Canvas.
